@@ -73,16 +73,30 @@
 		     <p>
 				{{resto.bao_adresse_1}} {{resto.bao_adresse_2}}<br>{{resto.bao_codepostal}} {{resto.bao_ville}} 
 			</p>
-			<div id="details{{resto.id}}" style="display:none">
-				<baoNotation [resto]="resto"></baoNotation>
-			</div>
+			<button *ngIf="resto.bao_tel!=''" ion-button icon-only (click)="phoneCall(resto.bao_tel)">
+			  <ion-icon name="call"></ion-icon>
+			</button>
+			<button *ngIf="resto.bao_mobile!=''" ion-button icon-only  (click)="phoneCall(resto.bao_mobile)">
+			  <ion-icon name="phone-portrait"></ion-icon>
+			</button>
+			<button  *ngIf="resto.bao_site!=''" ion-button icon-only (click)="goToSite(resto.bao_site)">
+			  <ion-icon name="globe"></ion-icon>
+			</button>
+			<button  *ngIf="resto.bao_facebook!=''" ion-button icon-only (click)="goToSite(resto.bao_facebook)">
+			  <ion-icon name="logo-facebook" ></ion-icon>
+			</button>
+			<button  *ngIf="resto.bao_instagram!=''" ion-button icon-only (click)="goToSite(resto.bao_instagram)">
+			  <ion-icon name="logo-instagram"></ion-icon>
+			</button>
+			<button ion-button icon-only  (click)="navigateToResto(resto.bao_longlat)">
+			  <ion-icon name="pin"></ion-icon>
+			</button>
+			<button class="baoNav" ion-button icon-only (click)="goToDetail(resto);">
+		        <ion-icon name="arrow-forward"></ion-icon>
+			</button>
+		
 		</ion-card-content>
-		<button id='down{{resto.id}}' ion-button icon-only (click)="downArrow(resto.id);">
-		        <ion-icon name="arrow-down"></ion-icon>
-		</button>
-		<button id='up{{resto.id}}' ion-button icon-only (click)="upArrow(resto.id);" style="display:none;">
-		        <ion-icon name="arrow-up"></ion-icon>
-		</button>
+		
 
 	</ion-card>
 </ion-content>

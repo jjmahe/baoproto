@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { Restos } from '../../providers/restos';
+import { Detail } from '../detail/detail' ;
 
 
 /*
@@ -30,19 +31,9 @@ export class BaoListe {
   			data => this.restos = data,
   			error => this.errorMessage = <any>error ) ;
   }
-  downArrow(clicked){
-    let restoID:string = clicked ;
-    console.log('clicked '+ restoID);
-    document.getElementById('down'+restoID).style.display = 'none' ;
-    document.getElementById('up'+restoID).style.display = 'block' ;
-    document.getElementById('details'+restoID).style.display = 'block' ;
-  }
-  upArrow(clicked){
-    let restoID:string = clicked ;
-    console.log('clicked '+ restoID);
-    document.getElementById('up'+restoID).style.display = 'none' ;
-    document.getElementById('down'+restoID).style.display = 'block' ;    
-    document.getElementById('details'+restoID).style.display = 'none' ;
-  }
+
+  public goToDetail = function(resto){
+        this.nav.push(Detail,resto);
+    } ;
 
 }

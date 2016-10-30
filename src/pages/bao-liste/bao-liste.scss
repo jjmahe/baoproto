@@ -13,8 +13,13 @@ page-bao-liste {
 		margin-top: 0 !important;
 		padding-top: 0 !important;
 	}
-	ion-card .button {
-		float:right;
-		margin-top: -40px;
+	
+	/*button {
+		display: inline-block!important;
+		float:none!important;
+		margin-top:5px!important;
+	}*/
+	.baoNav {
+		float: right !important;
 	}
 }

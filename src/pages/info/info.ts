@@ -9,6 +9,7 @@ import { Detail } from '../detail/detail' ;
   Ionic pages and navigation.
 */
 @Component({
+  selector: 'page-info',
   templateUrl: 'info.html'
 })
 export class Info {
