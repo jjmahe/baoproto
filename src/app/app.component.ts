@@ -6,8 +6,8 @@ import { TabsPage } from '../pages/tabs/tabs';
 import { Options } from '../providers/options' ;
 
 
-const urlBrowser = 'http://maps.google.com/maps/api/js?key=AIzaSyBc_Z6GWRSgrF0OcsgVB7Dqljbeawna75E';
-const urlIos = 'http://maps.google.com/maps/api/js?key=AIzaSyDMpqcE9uRcsnyIgsxnsTG8bnwqd1RDu4k';
+const urlBrowser = 'http://maps.google.com/maps/api/js?key=API_BROWSER_KEY';
+const urlIos = 'http://maps.google.com/maps/api/js?key=API_IOS_KEY';
 
 @Component({
   template: `<ion-nav [root]="rootPage"></ion-nav>`
