@@ -1,0 +1,27 @@
+<div *ngIf="baoChef!=''||baoSecond!=''||baoChefs!=''||baoCuisine!=''||baoPatissier!=''||baoPatissiere!=''">
+	<div class="brigadeTitle">Aux Fourneaux</div>
+	 <div *ngIf="baoChef!=''" class="brigadeLine">
+	 	<div class="brigadeLabel">Chef: </div>
+	 	<div class="brigadeName">{{baoChef}}</div>
+	 </div>
+	 <div *ngIf="baoSecond!=''" class="brigadeLine">
+	 	<div class="brigadeLabel">Second: </div>
+	 	<div class="brigadeName">{{baoSecond}}</div>
+	 </div>
+	 <div *ngIf="baoChefs!=''" class="brigadeLine">
+	 	<div class="brigadeLabel">Chefs: </div>
+	 	<div class="brigadeName">{{baoChefs}}</div>
+	 </div>
+	 <div *ngIf="baoCuisine!=''" class="brigadeLine">
+	 	<div class="brigadeLabel">Cuisine: </div>
+	 	<div class="brigadeName">{{baoCuisine}}</div>
+	 </div>
+	 <div *ngIf="baoPatissier!=''" class="brigadeLine">
+	 	<div class="brigadeLabel">Patissier: </div>
+	 	<div class="brigadeName">{{baoPatissier}}</div>
+	 </div>
+	 <div *ngIf="baoPatissiere!=''" class="brigadeLine">
+	 	<div class="brigadeLabel">Patissiere: </div>
+	 	<div class="brigadeName">{{baoPatissiere}}</div>
+	 </div>
+</div>

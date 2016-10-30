@@ -1,0 +1,21 @@
+baoBrigade {
+	.brigadeTitle {
+		font-weight: bold;
+	}
+	.brigadeLine{
+		display: block;
+		position: relative;
+		margin-right:50px;
+		margin-left:10px;
+	}
+
+	.brigadeLabel{
+		display: inline-block;
+		font-style: italic;
+	}
+
+	.brigadeName{
+		display: inline-block;
+	}
+
+}

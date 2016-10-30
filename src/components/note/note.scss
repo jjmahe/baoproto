@@ -1,0 +1,20 @@
+baoNote {
+	.baoNote{
+		display: block;
+		position: relative;
+		border-bottom: green 1px solid;
+		margin-right:50px;
+	}
+
+	.baoNoteLabel{
+		display: inline-block;
+	}
+
+	.baoNoteMots{
+		display: inline-block;
+	}
+
+	.baoNoteNote {
+		float: right;
+	}
+}

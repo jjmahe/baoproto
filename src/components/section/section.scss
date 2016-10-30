@@ -1,0 +1,22 @@
+baoSection {
+	.sectionTitle {
+		font-weight: bold;
+	}
+	.sectionLine{
+		display: block;
+		position: relative;
+		margin-right:50px;
+		margin-left:10px;
+	}
+
+	.sectionLabel{
+		display: inline-block;
+		font-style: italic;
+	}
+
+	.sectionValue{
+		display: block;
+		margin-left:10px;
+	}
+
+}

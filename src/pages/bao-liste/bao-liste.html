@@ -1,0 +1,88 @@
+<!--
+  Generated template for the BaoListe page.
+
+  See http://ionicframework.com/docs/v2/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Liste</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+	<ion-card *ngFor="let resto of restos">
+		<ion-card-content>
+			<ion-card-title [innerHTML]="resto.bao_restaurant">
+			</ion-card-title>
+			{{resto.bao_distance }}km - 
+			<span *ngIf="resto.bao_picto=='4Z'" >0000
+			</span>
+			<span *ngIf="resto.bao_picto=='3Z'">000
+			</span>
+			<span *ngIf="resto.bao_picto=='2Z'">00
+			</span>
+			<span *ngIf="resto.bao_picto=='1Z'">0
+			</span>
+			<span *ngIf="resto.bao_picto=='AR'">AR
+			</span>
+			
+			<span *ngIf="resto.bao_picto=='1CH'||resto.bao_picto=='1CD'" [inlineSVG]="'assets/svg/chandelier.svg'">
+			</span>
+			<span *ngIf="resto.bao_picto=='2CH'||resto.bao_picto=='2CD'">
+				<span [inlineSVG]="'assets/svg/chandelier.svg'">
+				</span>
+				<span [inlineSVG]="'assets/svg/chandelier.svg'">
+				</span>
+			</span>
+			<span *ngIf="resto.bao_picto=='3CH'||resto.bao_picto=='3CD'">
+				<span [inlineSVG]="'assets/svg/chandelier.svg'">
+				</span>
+				<span [inlineSVG]="'assets/svg/chandelier.svg'">
+				</span>
+				<span [inlineSVG]="'assets/svg/chandelier.svg'">
+				</span>
+			</span>
+			<span *ngIf="resto.bao_picto=='4CH'||resto.bao_picto=='4CD'">
+				<span [inlineSVG]="'assets/svg/chandelier.svg'">
+				</span>
+				<span [inlineSVG]="'assets/svg/chandelier.svg'">
+				</span>
+				<span [inlineSVG]="'assets/svg/chandelier.svg'">
+				</span>
+				<span [inlineSVG]="'assets/svg/chandelier.svg'">
+				</span>
+			</span>
+			<span *ngIf="resto.bao_picto=='5CH'">
+				<span [inlineSVG]="'assets/svg/chandelier.svg'">
+				</span>
+				<span [inlineSVG]="'assets/svg/chandelier.svg'">
+				</span>
+				<span [inlineSVG]="'assets/svg/chandelier.svg'">
+				</span>
+				<span [inlineSVG]="'assets/svg/chandelier.svg'">
+				</span>
+				<span [inlineSVG]="'assets/svg/chandelier.svg'">
+				</span>
+			</span>
+			<span *ngIf="resto.bao_picto=='0CD'||resto.bao_picto=='1CD'||resto.bao_picto=='2CD'||resto.bao_picto=='3CD'||resto.bao_picto=='4CD'" [innerHTML]="frac12">
+			</span>
+		     <p>
+				{{resto.bao_adresse_1}} {{resto.bao_adresse_2}}<br>{{resto.bao_codepostal}} {{resto.bao_ville}} 
+			</p>
+			<div id="details{{resto.id}}" style="display:none">
+				<baoNotation [resto]="resto"></baoNotation>
+			</div>
+		</ion-card-content>
+		<button id='down{{resto.id}}' ion-button icon-only (click)="downArrow(resto.id);">
+		        <ion-icon name="arrow-down"></ion-icon>
+		</button>
+		<button id='up{{resto.id}}' ion-button icon-only (click)="upArrow(resto.id);" style="display:none;">
+		        <ion-icon name="arrow-up"></ion-icon>
+		</button>
+
+	</ion-card>
+</ion-content>

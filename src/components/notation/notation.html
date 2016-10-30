@@ -1,0 +1,44 @@
+<div>
+		<img class="bao_featured" *ngIf="resto.bao_featured!=''" [src]="resto.bao_featured">
+		
+		<button *ngIf="resto.bao_tel!=''" ion-button icon-only (click)="phoneCall(resto.bao_tel)">
+		  <ion-icon name="call"></ion-icon>
+		</button>
+		<button *ngIf="resto.bao_mobile!=''" ion-button icon-only  (click)="phoneCall(resto.bao_mobile)">
+		  <ion-icon name="phone-portrait"></ion-icon>
+		</button>
+		<button  *ngIf="resto.bao_site!=''" ion-button icon-only (click)="goToSite(resto.bao_site)">
+		  <ion-icon name="globe"></ion-icon>
+		</button>
+		<button  *ngIf="resto.bao_facebook!=''" ion-button icon-only (click)="goToSite(resto.bao_facebook)">
+		  <ion-icon name="logo-facebook" ></ion-icon>
+		</button>
+		<button  *ngIf="resto.bao_instagram!=''" ion-button icon-only (click)="goToSite(resto.bao_instagram)">
+		  <ion-icon name="logo-instagram"></ion-icon>
+		</button>
+		<button ion-button icon-only  (click)="navigateToResto(resto.bao_longlat)">
+		  <ion-icon name="pin"></ion-icon>
+		</button>
+
+		<baoNote [noteLabel]="'Accueil'" [noteNote]="resto.bao_accueil"></baoNote>
+		<baoNote [noteLabel]="'Service'" [noteNote]="resto.bao_service"></baoNote>
+		<baoNote [noteLabel]="'Qualité/Prix'" [noteNote]="resto.bao_qualprix"></baoNote>
+		<baoNote [noteLabel]="'Pain'" [noteNote]="resto.bao_pain"></baoNote>
+		<baoNote *ngIf="resto.bao_cafe_note!=''" [noteLabel]="'Café'" [noteMots]="resto.bao_cafe_mots" [noteNote]="resto.bao_cafe_note"></baoNote>
+		<baoNote [noteLabel]="'Toilettes'" [noteNote]="resto.bao_wc"></baoNote>
+		<baoBrigade [baoChef]="resto.bao_chef" 
+					[baoSecond]="resto.bao_second" 
+					[baoChefs]="resto.bao_chefs" 
+					[baoCuisine]="resto.bao_cuisine"
+					[baoPatissier]="resto.bao_patissier"
+					[baoPatissiere]="resto.bao_patissiere"></baoBrigade>
+		<baoSection *ngIf="resto.bao_specialites!=''" [sectionLabel]="'Spécialités'"
+		            [sectionValues]="resto.bao_specialites"></baoSection>
+		<baoSection *ngIf="resto.bao_menus!=''" [sectionLabel]="'Menus'"
+		            [sectionValues]="resto.bao_menus"></baoSection>
+		<baoSection *ngIf="resto.bao_fermeture!=''" [sectionLabel]="'Fermetures'"
+		            [sectionValues]="resto.bao_fermeture"></baoSection>
+		<baoSection *ngIf="resto.bao_divers!=''" [sectionLabel]="'Plus'"
+		            [sectionValues]="resto.bao_divers"></baoSection>
+		<baoBonus *ngIf="resto.bao_bonus!=''" [bonus]="resto.bao_bonus"></baoBonus>
+</div>
