@@ -9,8 +9,8 @@
 		<ion-card-content>
 			<ion-card-title [innerHTML]="resto.bao_restaurant">
 			</ion-card-title>
-			{{resto.bao_distance }}km - 
-			<span *ngIf="resto.bao_picto=='4Z'" >0000
+			<button ion-button outline icon-left small><ion-icon name="car"></ion-icon>{{resto.bao_distance }}km</button>
+			<button ion-button outline small><span *ngIf="resto.bao_picto=='4Z'" >0000
 			</span>
 			<span *ngIf="resto.bao_picto=='3Z'">000
 			</span>
@@ -60,26 +60,26 @@
 				</span>
 			</span>
 			<span *ngIf="resto.bao_picto=='0CD'||resto.bao_picto=='1CD'||resto.bao_picto=='2CD'||resto.bao_picto=='3CD'||resto.bao_picto=='4CD'" [innerHTML]="frac12">
-			</span>
+			</span></button>
 		     <p>
 				{{resto.bao_adresse_1}} {{resto.bao_adresse_2}}<br>{{resto.bao_codepostal}} {{resto.bao_ville}} 
 			</p>
-			<button *ngIf="resto.bao_tel!=''" ion-button icon-only (click)="phoneCall(resto.bao_tel)">
+			<button *ngIf="resto.bao_tel!=''" ion-button icon-only small (click)="phoneCall(resto.bao_tel)">
 			  <ion-icon name="call"></ion-icon>
 			</button>
-			<button *ngIf="resto.bao_mobile!=''" ion-button icon-only  (click)="phoneCall(resto.bao_mobile)">
+			<button *ngIf="resto.bao_mobile!=''" ion-button icon-only small  (click)="phoneCall(resto.bao_mobile)">
 			  <ion-icon name="phone-portrait"></ion-icon>
 			</button>
-			<button  *ngIf="resto.bao_site!=''" ion-button icon-only (click)="goToSite(resto.bao_site)">
+			<button  *ngIf="resto.bao_site!=''" ion-button icon-only small (click)="goToSite(resto.bao_site)">
 			  <ion-icon name="globe"></ion-icon>
 			</button>
-			<button  *ngIf="resto.bao_facebook!=''" ion-button icon-only (click)="goToSite(resto.bao_facebook)">
+			<button  *ngIf="resto.bao_facebook!=''" ion-button icon-only small (click)="goToSite(resto.bao_facebook)">
 			  <ion-icon name="logo-facebook" ></ion-icon>
 			</button>
-			<button  *ngIf="resto.bao_instagram!=''" ion-button icon-only (click)="goToSite(resto.bao_instagram)">
+			<button  *ngIf="resto.bao_instagram!=''" ion-button icon-only small (click)="goToSite(resto.bao_instagram)">
 			  <ion-icon name="logo-instagram"></ion-icon>
 			</button>
-			<button ion-button icon-only  (click)="navigateToResto(resto.bao_longlat)">
+			<button ion-button icon-only  small (click)="navigateToResto(resto.bao_longlat)">
 			  <ion-icon name="pin"></ion-icon>
 			</button>
 			<button class="baoNav" ion-button icon-only (click)="goToDetail()">

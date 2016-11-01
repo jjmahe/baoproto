@@ -84,7 +84,7 @@ export class BaoCarte {
 
  openPopover(myev, scope ){
 
-    let popover = this.poCtrl.create(Info,scope);
+    let popover = this.poCtrl.create(Info,scope,{cssClass: 'info-popover'});
     
     popover.present(myev) ;
   }

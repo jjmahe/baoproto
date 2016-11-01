@@ -7,7 +7,7 @@ import { NavController } from 'ionic-angular';
   templateUrl: 'about.html'
 })
 export class AboutPage {
-
+	public frac12 : string = '&frac12;' ;
   constructor(public navCtrl: NavController) {
 
   }

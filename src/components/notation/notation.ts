@@ -29,8 +29,13 @@ export class Notation {
   }
 
   goToSite(URL){
-    console.log('inAppBrowser called to '+URL);
+    
     let browser = new InAppBrowser("http://"+URL,'_system');
+    browser.show() ;
+  }
+  goToURL(URL){
+    
+    let browser = new InAppBrowser(URL,'_system');
     browser.show() ;
   }
 
