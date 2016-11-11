@@ -3,6 +3,7 @@ import { NavController , PopoverController } from 'ionic-angular';
 import { Options } from '../../providers/options'
 import { Restos } from '../../providers/restos'
 import { Info } from '../info/info'
+import { LegendePage } from '../legende/legende'
 
 
  
@@ -72,6 +73,14 @@ export class BaoCarte {
                         scope: {resto: this.restos[i],
                                 nav: this.navCtrl} ,
                         map: this.map,
+                        icon: {
+                          path: google.maps.SymbolPath.BACKWARD_CLOSED_ARROW,
+                          scale: 5,
+                          fillColor: this.restos[i].bao_pictocolor,
+                          fillOpacity: 0.7,
+                          strokeColor: 'grey',
+                          strokeWeight: 1
+                        },
                         title: this.restos[i].bao_restaurant ,
                         position: new google.maps.LatLng(this.restos[i].bao_latitude,this.restos[i].bao_longitude)
                       });
@@ -87,6 +96,13 @@ export class BaoCarte {
     let popover = this.poCtrl.create(Info,scope,{cssClass: 'info-popover'});
     
     popover.present(myev) ;
+  }
+
+  openLegende(event){
+    let popover = this.poCtrl.create(LegendePage,{},{cssClass: 'legende-popover'});
+    popover.present({
+      ev: event
+    });
   }
   
 }

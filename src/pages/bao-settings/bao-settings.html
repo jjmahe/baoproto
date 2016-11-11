@@ -7,7 +7,12 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>Filtre</ion-title>
+    <ion-title>Le Bouche à Oreille</ion-title>
+  <ion-buttons end>
+      <button ion-button icon-only>
+        <img src="assets/img/bao.png">
+      </button>
+    </ion-buttons>
   </ion-navbar>
 
 </ion-header>
@@ -17,10 +22,10 @@
 
 	<ion-segment [(ngModel)]="options.ordre">
 	    <ion-segment-button value="asc">
-	      ordre ascendant
+	      ordre croissant
 	    </ion-segment-button>
 	    <ion-segment-button value="desc">
-	      ordre descendant
+	      ordre décroissant
 	    </ion-segment-button>
 	 </ion-segment>
 
@@ -80,7 +85,7 @@
     <ion-item>
       <ion-label>Choisissez une ville</ion-label>
       <ion-select [(ngModel)]="options.ville">
-        <ion-option *ngFor="let ville of villes" value="{{ville.name}}">{{ville.name}} ({{ville.count}})</ion-option>
+        <ion-option *ngFor="let ville of villes;trackBy:ville?.name" value="{{ville.name}}">{{ville.name}} ({{ville.count}})</ion-option>
       </ion-select>
     </ion-item>
   </div>

@@ -1,13 +1,28 @@
 page-info {
 
-	svg.chandelier {
-		display: inline ;
-		height: 15px;
-		width: 15px;
+	.baoNav {
+		float:right;
 	}
-
-	svg.chandelier path {
-		fill: blue ;
+	ion-card-title {
+		margin-top: 0 !important;
+		padding: 8px 0 0px 0 !important;
+		color: white !important;
+	}
+	
+	.myheader {
+		margin-left: -16px;
+		padding-left: 16px;
+		margin-right: -16px;
+		padding-right: 16px;
+		background-color: green;
+		color: white;
+		margin-top: -15px;
+		padding-top: 10px;
+		padding-bottom:10px;
+		font-weight: bold;
+	}
+	.buttonPicto{
+		float:right;
 	}
 
 }

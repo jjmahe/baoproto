@@ -8,7 +8,7 @@
 
 <ion-content padding>
 <h1>Qui sommes-nous ?</h1>
-<p>Le Bouche à Oreille existe depuis 1990 dans sa version trimestrielle papier, et vous êtes en train d’en lire la version Internet née en juin 2000.
+<p>Le Bouche à Oreille existe depuis 1990 dans sa version trimestrielle papier, et vous êtes en train d’en lire la version en ligne née en juin 2000.
 </p>
 <p>« LE BOUCHE A OREILLE » est un guide de restaurants établi dans le Sud-est provençal qui donne son avis sur « Les bonnes tables, les mauvaises et celles à éviter » où il a mangé, paye scrupuleusement ses repas même quand c’est mauvais et fuit les déjeuners de presse où il est régulièrement invité pour dire que c’est bon. Avec l’aide de « chandeliers », nous avons créé une classification des restaurants et non une hiérarchie des tables, des catégories pour vous aider dans votre choix de restaurant (voir ci-dessous).
 </p>
@@ -18,108 +18,49 @@
 </p>
 <p>Si vous tenez à mettre du beurre dans nos épinards, vous pouvez vous abonner à la version papier . Nous vous en serons éternellement reconnaissants… au moins pour une année (4 numéros)!
 </p>
-<p>Si vous possédez une tablette et un portable modernes, vous pouvez télécharger l’application gratuite (lien), en user et en abuser sans limite comme des dizaines de milliards d’utilisateurs ravis d’avoir à disposition un guide culinaire de la région particulièrement pratique, un petit brûlot bien sympathique à la fois sérieux et drôle, vous alliez le dire.
+<p>Vous avez téléchargé l’application gratuite, et vous pouvez en user et en abuser sans limite comme des dizaines de milliards d’utilisateurs ravis d’avoir à disposition un guide culinaire de la région PACA particulièrement pratique, un petit brûlot bien sympathique à la fois sérieux et drôle, vous alliez le dire.
 </p>
-<p>Enfin, si vous préférez nous lire sur un site Internet classique, inutile de chercher: vous y êtes!..
+<p>Enfin, si vous préférez nous lire sur un site Internet classique, <button ion-button clear (click)="goToBao()">c'est par là&hellip;</button>
 </p>
 <p>Bonne lecture!
 </p>
 <h1>Nos Pictogrammes</h1>
 <ion-list>
 	<ion-item>
-		<div class="baoPicto">
-				<span [inlineSVG]="'assets/svg/chandelier.svg'">
-				</span>
-				<span [inlineSVG]="'assets/svg/chandelier.svg'">
-				</span>
-				<span [inlineSVG]="'assets/svg/chandelier.svg'">
-				</span>
-				<span [inlineSVG]="'assets/svg/chandelier.svg'">
-				</span>
-				<span [inlineSVG]="'assets/svg/chandelier.svg'">
-				</span>
-		</div>
-		<div class="baoLegende">Exceptionnel</div>
+		<img src="assets/img/img5ch.png"><div class="pictoText">Exceptionnel</div>
 	</ion-item>
 	<ion-item>
-		<div class="baoPicto">
-				<span [inlineSVG]="'assets/svg/chandelier.svg'">
-				</span>
-				<span [inlineSVG]="'assets/svg/chandelier.svg'">
-				</span>
-				<span [inlineSVG]="'assets/svg/chandelier.svg'">
-				</span>
-				<span [inlineSVG]="'assets/svg/chandelier.svg'">
-				</span>
-		</div>
-		<div class="baoLegende">Grand chef</div>
+		<img src="assets/img/img4ch.png"><div class="pictoText">Grand chef</div>
 	</ion-item>
 	<ion-item>
-		<div class="baoPicto">
-				<span [inlineSVG]="'assets/svg/chandelier.svg'">
-				</span>
-				<span [inlineSVG]="'assets/svg/chandelier.svg'">
-				</span>
-				<span [inlineSVG]="'assets/svg/chandelier.svg'">
-				</span>
-				<span  [innerHTML]="frac12">
-				</span>
-		</div>
-		<div class="baoLegende">Cuisine très raffinée</div>
+		<img src="assets/img/img3cd.png"><div class="pictoText">Cuisine très raffinée</div>
 	</ion-item>
 	<ion-item>
-		<div class="baoPicto">
-				<span [inlineSVG]="'assets/svg/chandelier.svg'">
-				</span>
-				<span [inlineSVG]="'assets/svg/chandelier.svg'">
-				</span>
-				<span [inlineSVG]="'assets/svg/chandelier.svg'">
-				</span>
-		</div>
-		<div class="baoLegende">Cuisine raffinée</div>
+		<img src="assets/img/img3ch.png"><div class="pictoText">Cuisine raffinée</div>
 	</ion-item>
 	<ion-item>
-		<div class="baoPicto">
-				<span [inlineSVG]="'assets/svg/chandelier.svg'">
-				</span>
-				<span [inlineSVG]="'assets/svg/chandelier.svg'">
-				</span>
-				<span  [innerHTML]="frac12">
-				</span>
-</div>
-		<div class="baoLegende">Très bonne table</div>
+		<img src="assets/img/img2cd.png"><div class="pictoText">Très bonne table</div>
 	</ion-item>
 	<ion-item>
-		<div class="baoPicto">
-				<span [inlineSVG]="'assets/svg/chandelier.svg'">
-				</span>
-				<span [inlineSVG]="'assets/svg/chandelier.svg'">
-				</span>
-		</div>
-		<div class="baoLegende">Bonne table</div>
+		<img src="assets/img/img2ch.png"><div class="pictoText">Bonne table</div>
 	</ion-item>
 	<ion-item>
-		<div class="baoPicto">
-				<span [inlineSVG]="'assets/svg/chandelier.svg'">
-				</span>
-			</div>
-		<div class="baoLegende">Table moyenne</div>
+		<img src="assets/img/img1ch.png"><div class="pictoText">Table moyenne</div>
 	</ion-item>
 	<ion-item>
-		<div class="baoPicto">0</div>
-		<div class="baoLegende">Table médiocre</div>
+		<img src="assets/img/imgar.png"><div class="pictoText">À revoir</div>
 	</ion-item>
 	<ion-item>
-		<div class="baoPicto">00</div>
-		<div class="baoLegende">Mauvaise table</div>
+		<img src="assets/img/img1z.png"><div class="pictoText">Table médiocre</div>
 	</ion-item>
 	<ion-item>
-		<div class="baoPicto">000</div>
-		<div class="baoLegende">À éviter</div>
+		<img src="assets/img/img2z.png"><div class="pictoText">Mauvaise table</div>
 	</ion-item>
 	<ion-item>
-		<div class="baoPicto">0000</div>
-		<div class="baoLegende">Un scandale</div>
+		<img src="assets/img/img3z.png"><div class="pictoText">Table à éviter</div>
+	</ion-item>
+	<ion-item>
+		<img src="assets/img/img4z.png"><div class="pictoText">Un scandale</div>
 	</ion-item>
 </ion-list>
 </ion-content>

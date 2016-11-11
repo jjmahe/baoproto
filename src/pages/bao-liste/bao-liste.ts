@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
+import {CallNumber,InAppBrowser,LaunchNavigator} from 'ionic-native';  
 import { Restos } from '../../providers/restos';
 import { Detail } from '../detail/detail' ;
 
@@ -36,4 +37,28 @@ export class BaoListe {
         this.nav.push(Detail,resto);
     } ;
 
+  phoneCall(phoneNumber){
+/*    let allDots: string = "/\./g";*/
+    var dots = new RegExp(/\./g);
+    let phoneTrueNumber: string = phoneNumber.replace(dots,'');
+/*    alert(phoneTrueNumber);*/
+/*    Vibration.vibrate(1000);*/
+    CallNumber.callNumber( phoneTrueNumber , false) 
+      .catch(()=>alert('erreur avec callnumber'));
+  }
+
+  goToSite(URL){
+    
+    let browser = new InAppBrowser("http://"+URL,'_system');
+    browser.show() ;
+  }
+
+
+  navigateToResto(LatLong){
+    LaunchNavigator.navigate(LatLong)
+    .then(
+      success => console.log('Launched navigator'),
+      error => console.log('Error launching navigator', error)
+    );
+  }
 }

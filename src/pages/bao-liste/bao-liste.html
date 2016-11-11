@@ -13,65 +13,16 @@
 </ion-header>
 
 
-<ion-content padding>
-	<ion-card *ngFor="let resto of restos">
+<ion-content padding >
+	
+	<ion-card *ngFor="let resto of restos" >
 		<ion-card-content>
+		<div class="myheader">
 			<ion-card-title [innerHTML]="resto.bao_restaurant">
 			</ion-card-title>
+		</div>
 			<button ion-button outline icon-left small><ion-icon name="car"></ion-icon>{{resto.bao_distance }}km</button>
-			<button ion-button outline small>
-				<span *ngIf="resto.bao_picto=='4Z'" >0000
-				</span>
-				<span *ngIf="resto.bao_picto=='3Z'">000
-				</span>
-				<span *ngIf="resto.bao_picto=='2Z'">00
-				</span>
-				<span *ngIf="resto.bao_picto=='1Z'">0
-				</span>
-				<span *ngIf="resto.bao_picto=='AR'">AR
-				</span>
-				
-				<span *ngIf="resto.bao_picto=='1CH'||resto.bao_picto=='1CD'" [inlineSVG]="'assets/svg/chandelier.svg'">
-				</span>
-				<span *ngIf="resto.bao_picto=='2CH'||resto.bao_picto=='2CD'">
-					<span [inlineSVG]="'assets/svg/chandelier.svg'">
-					</span>
-					<span [inlineSVG]="'assets/svg/chandelier.svg'">
-					</span>
-				</span>
-				<span *ngIf="resto.bao_picto=='3CH'||resto.bao_picto=='3CD'">
-					<span [inlineSVG]="'assets/svg/chandelier.svg'">
-					</span>
-					<span [inlineSVG]="'assets/svg/chandelier.svg'">
-					</span>
-					<span [inlineSVG]="'assets/svg/chandelier.svg'">
-					</span>
-				</span>
-				<span *ngIf="resto.bao_picto=='4CH'||resto.bao_picto=='4CD'">
-					<span [inlineSVG]="'assets/svg/chandelier.svg'">
-					</span>
-					<span [inlineSVG]="'assets/svg/chandelier.svg'">
-					</span>
-					<span [inlineSVG]="'assets/svg/chandelier.svg'">
-					</span>
-					<span [inlineSVG]="'assets/svg/chandelier.svg'">
-					</span>
-				</span>
-				<span *ngIf="resto.bao_picto=='5CH'">
-					<span [inlineSVG]="'assets/svg/chandelier.svg'">
-					</span>
-					<span [inlineSVG]="'assets/svg/chandelier.svg'">
-					</span>
-					<span [inlineSVG]="'assets/svg/chandelier.svg'">
-					</span>
-					<span [inlineSVG]="'assets/svg/chandelier.svg'">
-					</span>
-					<span [inlineSVG]="'assets/svg/chandelier.svg'">
-					</span>
-				</span>
-				<span *ngIf="resto.bao_picto=='0CD'||resto.bao_picto=='1CD'||resto.bao_picto=='2CD'||resto.bao_picto=='3CD'||resto.bao_picto=='4CD'" [innerHTML]="frac12">
-				</span>
-			</button>
+			<button ion-button outline small class="buttonPicto"><img class="baoPicto" [src]="resto.bao_pictohtml"></button>
 		     <p>
 				{{resto.bao_adresse_1}} {{resto.bao_adresse_2}}<br>{{resto.bao_codepostal}} {{resto.bao_ville}} 
 			</p>
@@ -90,10 +41,10 @@
 			<button  *ngIf="resto.bao_instagram!=''" ion-button icon-only small (click)="goToSite(resto.bao_instagram)">
 			  <ion-icon name="logo-instagram"></ion-icon>
 			</button>
-			<button ion-button icon-only  small (click)="navigateToResto(resto.bao_longlat)">
-			  <ion-icon name="pin"></ion-icon>
+			<button ion-button text-only small (click)="navigateToResto(resto.bao_longlat)">
+			  A > B
 			</button>
-			<button class="baoNav" ion-button icon-only (click)="goToDetail(resto);">
+			<button class="baoNav" ion-button icon-only small (click)="goToDetail(resto);">
 		        <ion-icon name="arrow-forward"></ion-icon>
 			</button>
 		
@@ -101,4 +52,5 @@
 		
 
 	</ion-card>
+
 </ion-content>
