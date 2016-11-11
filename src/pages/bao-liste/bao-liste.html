@@ -41,8 +41,8 @@
 			<button  *ngIf="resto.bao_instagram!=''" ion-button icon-only small (click)="goToSite(resto.bao_instagram)">
 			  <ion-icon name="logo-instagram"></ion-icon>
 			</button>
-			<button ion-button text-only small (click)="navigateToResto(resto.bao_longlat)">
-			  A > B
+			<button ion-button icon-only small (click)="navigateToResto(resto.bao_longlat)">
+			  <ion-icon name="map"></ion-icon>
 			</button>
 			<button class="baoNav" ion-button icon-only small (click)="goToDetail(resto);">
 		        <ion-icon name="arrow-forward"></ion-icon>
