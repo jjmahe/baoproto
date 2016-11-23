@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { IonicApp, IonicModule } from 'ionic-angular';
-import { InlineSVGModule } from 'ng2-inline-svg' ;
 import { MyApp } from './app.component';
 import { BaoSettings } from '../pages/bao-settings/bao-settings'
 import { BaoListe } from '../pages/bao-liste/bao-liste'
@@ -9,8 +8,10 @@ import { AboutPage } from '../pages/about/about';
 import { TabsPage } from '../pages/tabs/tabs';
 import { Info } from '../pages/info/info';
 import { Detail } from '../pages/detail/detail';
+import { LegendePage } from '../pages/legende/legende' ;
 import { Options } from '../providers/options';
 import { Restos } from '../providers/restos';
+import { Villes } from '../providers/villes' ;
 import { Notation } from '../components/notation/notation';
 import { Note } from '../components/note/note' ;
 import { Brigade } from '../components/brigade/brigade';
@@ -31,11 +32,11 @@ import { Bonus } from '../components/bonus/bonus';
     Note,
     Brigade,
     Section,
-    Bonus
+    Bonus,
+    LegendePage
   ],
   imports: [
-    IonicModule.forRoot(MyApp),
-    InlineSVGModule
+    IonicModule.forRoot(MyApp)
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -46,8 +47,11 @@ import { Bonus } from '../components/bonus/bonus';
     AboutPage,
     TabsPage,
     Info,
-    Detail
+    Detail,
+    LegendePage
   ],
-  providers: [Options,Restos]
+  providers: [Options,Restos,Villes]
 })
-export class AppModule {}
+export class AppModule {
+
+}
