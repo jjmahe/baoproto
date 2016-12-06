@@ -7,7 +7,12 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>Liste</ion-title>
+    <ion-title>{{restos?.length}} Restaurants</ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only outline (click)="refreshButton()">
+        <ion-icon name="refresh"></ion-icon>
+      </button>
+    </ion-buttons>
   </ion-navbar>
 
 </ion-header>

@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
-import {CallNumber,InAppBrowser,LaunchNavigator} from 'ionic-native';  
+import { NavController, Platform } from 'ionic-angular';
+import {CallNumber,InAppBrowser,LaunchNavigator,Geolocation} from 'ionic-native';  
 import { Restos } from '../../providers/restos';
 import { Detail } from '../detail/detail' ;
+import { Options } from '../../providers/options';
 
 
 /*
@@ -22,7 +23,9 @@ export class BaoListe {
   private nav : NavController ;
 
   constructor(private navCtrl: NavController, 
-  			private restosService: Restos) {
+  			private restosService: Restos,
+        private  options: Options,
+        private platform: Platform ) {
     this.nav = navCtrl ;
   }
 
@@ -53,6 +56,24 @@ export class BaoListe {
     browser.show() ;
   }
 
+  refreshButton(){
+    if( !this.platform.is('core') ){
+        Geolocation.getCurrentPosition().then((resp) => {
+         // resp.coords.latitude
+         // resp.coords.longitude
+           this.options.latitude = resp.coords.latitude ;
+           this.options.longitude = resp.coords.longitude ;
+        })
+    }
+    else{
+      this.options.latitude = 43.125370;
+      this.options.longitude =  5.930296 ;
+    }
+    this.restosService.getRestos()
+      .subscribe(
+        data => this.restos = data,
+        error => this.errorMessage = <any>error ) ;
+  }
 
   navigateToResto(LatLong){
     LaunchNavigator.navigate(LatLong)

@@ -96,6 +96,14 @@ export class Restos {
 		return a.bao_distance - b.bao_distance ;
 	}
 
+	let	baoSortbyPublishedDesc = function(a:any,b:any){
+		return baoSortbyPublished(b,a) ;
+	}
+
+	let	baoSortbyPublished = function(a:any,b:any){
+		return a.bao_published - b.bao_published ;
+	}
+
 	let baoSortbyAlphabetiqueDesc = function(a:any,b:any){
 		return(baoSortbyAlphabetique(b,a));
 	}
@@ -216,6 +224,9 @@ export class Restos {
 	      	if(this.tri == 'alphabetique'){
 		        restos = data.filter(baoFilter,this).sort(baoSortbyAlphabetique) ;
 		    }
+	      	if(this.tri == 'published'){
+		        restos = data.filter(baoFilter,this).sort(baoSortbyPublished) ;
+		    }
 		}
 		else {
 	      	if(this.tri == 'distance'){
@@ -227,6 +238,9 @@ export class Restos {
 	      	if(this.tri == 'alphabetique'){
 		        restos = data.filter(baoFilter,this).sort(baoSortbyAlphabetiqueDesc) ;
 		    }			
+	      	if(this.tri == 'published'){
+		        restos = data.filter(baoFilter,this).sort(baoSortbyPublishedDesc) ;
+		    }
 		}
 		return restos || { };
 	}
