@@ -14,7 +14,7 @@
 
 
 <ion-content padding>
-	<button ion-button outline icon-left small><ion-icon name="car"></ion-icon>{{resto.bao_distance }}km</button>
+  <button ion-button icon-right outline small (click)="navigateToResto(resto.bao_longlat)">itinéraire {{resto.bao_distance }}km <ion-icon name="arrow-forward"></ion-icon></button>
 	<button ion-button outline small class="buttonPicto"><img class="bao_featured" [src]="resto.bao_pictohtml"></button>
      <p>
 		{{resto.bao_adresse_1}} {{resto.bao_adresse_2}}<br>{{resto.bao_codepostal}} {{resto.bao_ville}} 

@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
+import { LaunchNavigator } from 'ionic-native' ;
 
 /*
   Generated class for the DetailPage page.
@@ -15,6 +16,14 @@ export class Detail {
 	public resto: any;
   constructor(private navCtrl: NavController, private params: NavParams) {
   	this.resto = params.data ;
+  }
+ 
+ navigateToResto(LatLong){
+    LaunchNavigator.navigate(LatLong)
+    .then(
+      success => console.log('Launched navigator'),
+      error => console.log('Error launching navigator', error)
+    );
   }
 
 }

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import {CallNumber,InAppBrowser,LaunchNavigator} from 'ionic-native';  
+import {CallNumber, InAppBrowser} from 'ionic-native';  
 
 /*
   Generated class for the Notation provider.
@@ -30,23 +30,13 @@ export class Notation {
 
   goToSite(URL){
     
-    let browser = new InAppBrowser("http://"+URL,'_system');
-    browser.show() ;
+    let browser = new InAppBrowser("http://"+URL,'_BLANK');
+    
   }
   goToURL(URL){
     
-    let browser = new InAppBrowser(URL,'_system');
-    browser.show() ;
+    let browser = new InAppBrowser(URL,'_BLANK');
+    /*browser.show() ;*/
   }
-
-
-  navigateToResto(LatLong){
-    LaunchNavigator.navigate(LatLong)
-    .then(
-      success => console.log('Launched navigator'),
-      error => console.log('Error launching navigator', error)
-    );
-  }
-
 
 }

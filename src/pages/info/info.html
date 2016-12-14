@@ -11,7 +11,7 @@
 			<ion-card-title [innerHTML]="resto.bao_restaurant">
 			</ion-card-title>
 		</div>
-			<button ion-button outline icon-left small><ion-icon name="car"></ion-icon>{{resto.bao_distance }}km</button>
+		  <button ion-button icon-right outline small (click)="navigateToResto(resto.bao_longlat)">{{resto.bao_distance }}km <ion-icon name="arrow-forward"></ion-icon></button>
 			<button ion-button outline small class="buttonPicto"><img class="bao_featured" [src]="resto.bao_pictohtml"></button>
 		     <p>
 				{{resto.bao_adresse_1}} {{resto.bao_adresse_2}}<br>{{resto.bao_codepostal}} {{resto.bao_ville}} 
@@ -31,9 +31,6 @@
 		</button>
 		<button  *ngIf="resto.bao_instagram!=''" ion-button icon-only small (click)="goToSite(resto.bao_instagram)">
 		  <ion-icon name="logo-instagram"></ion-icon>
-		</button>
-		<button ion-button icon-only  small (click)="navigateToResto(resto.bao_longlat)">
-		  <ion-icon name="map"></ion-icon>
 		</button>
 
 			

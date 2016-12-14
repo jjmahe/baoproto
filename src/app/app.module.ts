@@ -9,6 +9,7 @@ import { TabsPage } from '../pages/tabs/tabs';
 import { Info } from '../pages/info/info';
 import { Detail } from '../pages/detail/detail';
 import { LegendePage } from '../pages/legende/legende' ;
+import { LegendePictoPage } from '../pages/legende-picto/legende-picto' ;
 import { Options } from '../providers/options';
 import { Restos } from '../providers/restos';
 import { Villes } from '../providers/villes' ;
@@ -33,7 +34,8 @@ import { Bonus } from '../components/bonus/bonus';
     Brigade,
     Section,
     Bonus,
-    LegendePage
+    LegendePage,
+    LegendePictoPage
   ],
   imports: [
     IonicModule.forRoot(MyApp)
@@ -48,7 +50,8 @@ import { Bonus } from '../components/bonus/bonus';
     TabsPage,
     Info,
     Detail,
-    LegendePage
+    LegendePage,
+    LegendePictoPage
   ],
   providers: [Options,Restos,Villes]
 })

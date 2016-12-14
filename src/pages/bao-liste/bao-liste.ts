@@ -1,9 +1,11 @@
 import { Component } from '@angular/core';
-import { NavController, Platform } from 'ionic-angular';
-import {CallNumber,InAppBrowser,LaunchNavigator,Geolocation} from 'ionic-native';  
+import { NavController, Platform,PopoverController } from 'ionic-angular';
+import { CallNumber,InAppBrowser,LaunchNavigator,Geolocation} from 'ionic-native';  
 import { Restos } from '../../providers/restos';
 import { Detail } from '../detail/detail' ;
 import { Options } from '../../providers/options';
+import { LegendePictoPage } from '../legende-picto/legende-picto'
+
 
 
 /*
@@ -21,11 +23,13 @@ export class BaoListe {
 	public errorMessage : any ;
   public frac12 : string = '&frac12;' ;
   private nav : NavController ;
+  
 
   constructor(private navCtrl: NavController, 
   			private restosService: Restos,
         private  options: Options,
-        private platform: Platform ) {
+        private platform: Platform ,
+        private poCtrl: PopoverController) {
     this.nav = navCtrl ;
   }
 
@@ -52,8 +56,8 @@ export class BaoListe {
 
   goToSite(URL){
     
-    let browser = new InAppBrowser("http://"+URL,'_system');
-    browser.show() ;
+    let browser = new InAppBrowser("http://"+URL,'_BLANK');
+ 
   }
 
   refreshButton(){
@@ -81,5 +85,13 @@ export class BaoListe {
       success => console.log('Launched navigator'),
       error => console.log('Error launching navigator', error)
     );
+  }
+
+  openLegende(event,picto){
+    
+    let popover = this.poCtrl.create(LegendePictoPage,{thePicto: picto},{});
+    popover.present({
+      ev: event
+    });
   }
 }

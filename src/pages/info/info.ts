@@ -38,8 +38,8 @@ export class Info {
 
   goToSite(URL){
     
-    let browser = new InAppBrowser("http://"+URL,'_system');
-    browser.show() ;
+    let browser = new InAppBrowser("http://"+URL,'_BLANK');
+  
   }
 
 
