@@ -1,12 +1,12 @@
-import { Component } from '@angular/core';
-import { NavController, Platform,PopoverController } from 'ionic-angular';
-import { CallNumber,InAppBrowser,LaunchNavigator,Geolocation} from 'ionic-native';  
-import { Restos } from '../../providers/restos';
+import { Component, ViewChild } from '@angular/core';
+import { NavController, Platform,PopoverController, LoadingController , Loading , Content } from 'ionic-angular';
+import { CallNumber,InAppBrowser,LaunchNavigator,Geolocation, Shake} from 'ionic-native';  
+import { Restolist } from '../../providers/restolist';
 import { Detail } from '../detail/detail' ;
 import { Options } from '../../providers/options';
-import { LegendePictoPage } from '../legende-picto/legende-picto'
-
-
+import { GoogleAnalyticsService } from '../../providers/google-analytics-service';
+import { LegendePictoPage } from '../legende-picto/legende-picto';
+import { Observable } from 'rxjs/Observable';
 
 /*
   Generated class for the BaoListe page.
@@ -19,25 +19,64 @@ import { LegendePictoPage } from '../legende-picto/legende-picto'
   templateUrl: 'bao-liste.html'
 })
 export class BaoListe {
+  @ViewChild(Content) content: Content;
+
 	public restos: any[] ;
 	public errorMessage : any ;
   public frac12 : string = '&frac12;' ;
   private nav : NavController ;
-  
+  private spinner: Loading; 
+  public watcher: any;
+  public trackByFn: (x: number, y: any )=>number = function( index, item ) {
+      /* console.log( "TrackBy:", item.bao_restaurant, "at index", index );*/
+      return( item.id );
+    }  ;
+
 
   constructor(private navCtrl: NavController, 
-  			private restosService: Restos,
+  			private restosService: Restolist,
         private  options: Options,
         private platform: Platform ,
-        private poCtrl: PopoverController) {
+        private poCtrl: PopoverController,
+        public loadingCtrl: LoadingController,
+        public GAService: GoogleAnalyticsService ) {
     this.nav = navCtrl ;
   }
 
   ionViewWillEnter(){
-  	this.restosService.getRestos()
-  		.subscribe(
-  			data => this.restos = data,
-  			error => this.errorMessage = <any>error ) ;
+    this.GAService.trackView('Liste');
+    if( this.options.page != 'details' ){
+      this.content.scrollTo(0, 0) ;
+      this.spinner = this.loadingCtrl.create({
+        content: 'Bon Appétit...'
+      }) ;
+      this.spinner.present() ;
+      this.restos = [] ;
+    	this.restosService.getRestos()
+    		.subscribe(
+    			data => {this.restos = data;
+                  this.spinner.dismiss();
+                  this.watcher = Shake.startWatch(60).subscribe(() => {
+                    let index = Math.round(Math.random()*(this.restos.length-1));
+                    this.goToDetail(this.restos[index]);
+                  });
+                },
+    			error => this.errorMessage = <any>error)
+         ;
+     }
+     else{
+       this.watcher = Shake.startWatch(60).subscribe(() => {
+                    let index = Math.round(Math.random()*(this.restos.length-1));
+                    this.goToDetail(this.restos[index]);
+                  });
+     }
+     this.options.page = 'liste' ;
+  }
+
+  ionViewWillLeave(){
+    if(this.watcher){
+      this.watcher.unsubscribe();
+    }
   }
 
   public goToDetail = function(resto){
@@ -61,6 +100,10 @@ export class BaoListe {
   }
 
   refreshButton(){
+    this.spinner = this.loadingCtrl.create({
+      content: 'Respirez...'
+    }) ;
+    this.spinner.present();
     if( !this.platform.is('core') ){
         Geolocation.getCurrentPosition().then((resp) => {
          // resp.coords.latitude
@@ -75,7 +118,7 @@ export class BaoListe {
     }
     this.restosService.getRestos()
       .subscribe(
-        data => this.restos = data,
+        data => {this.restos = data;this.spinner.dismiss();},
         error => this.errorMessage = <any>error ) ;
   }
 
@@ -94,4 +137,5 @@ export class BaoListe {
       ev: event
     });
   }
+
 }

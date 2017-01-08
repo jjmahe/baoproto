@@ -1,9 +1,10 @@
 import { Component , ViewChild, ElementRef} from '@angular/core';
-import { NavController , PopoverController } from 'ionic-angular';
+import { NavController , PopoverController , LoadingController , Loading } from 'ionic-angular';
 import { Options } from '../../providers/options'
-import { Restos } from '../../providers/restos'
+import { Restolist } from '../../providers/restolist'
 import { Info } from '../info/info'
 import { LegendePage } from '../legende/legende'
+import { GoogleAnalyticsService } from '../../providers/google-analytics-service';
 
 
  
@@ -29,23 +30,37 @@ export class BaoCarte {
   private restos: any[] ;
   private errorMessage : any ;
   private markers : any[];
+  public spinner : Loading ;
+  
   /*private infoWindow: any ;*/
   /* private nav : NavController ;*/
 
-  constructor(public navCtrl: NavController, private optionsService: Options, private restosService: Restos,
-    private poCtrl: PopoverController) {
+  constructor(public navCtrl: NavController, 
+    private optionsService: Options, 
+    private restosService: Restolist,
+    private poCtrl: PopoverController,
+    public loadingCtrl: LoadingController,
+    public GAService: GoogleAnalyticsService ) {
      this.options = optionsService ;
      /*this.nav = navCtrl ;*/
      /*this.infoWindow = new google.maps.InfoWindow();*/
   }
  
   ionViewWillEnter(){
-    this.markers = new Array ;
-    this.restosService.getRestos()
-      .subscribe(
-        data => {this.restos = data;
-                this.loadMap();},
-        error => this.errorMessage = <any>error ) ;  
+    this.GAService.trackView('Carte');
+    if( this.options.page != 'details' ){
+            this.spinner = this.loadingCtrl.create({
+        content: 'Prenons de la hauteur...'
+      }) ;
+      this.spinner.present() ;
+      this.markers = new Array ;
+      this.restosService.getRestos()
+        .subscribe(
+          data => {this.restos = data;
+                  this.loadMap();},
+          error => this.errorMessage = <any>error ) ;  
+    }
+    this.options.page = 'carte' ;
   }
  
   loadMap(){
@@ -61,7 +76,7 @@ export class BaoCarte {
     this.map = new google.maps.Map(this.mapElement.nativeElement, mapOptions);
     
     this.addMarkers();
-
+    this.spinner.dismiss();
  
   }
 
