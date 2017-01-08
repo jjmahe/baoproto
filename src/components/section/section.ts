@@ -20,6 +20,8 @@ export class Section {
     
   }
   ngOnChanges(changes){
-  	this.values = this.sectionValues.replace(/ *$/g,'').split('.');
+    if(this.sectionValues){
+    	this.values = this.sectionValues.replace(/ *$/g,'').split('.');
+    }
   }
 }

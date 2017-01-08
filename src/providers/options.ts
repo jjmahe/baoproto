@@ -21,7 +21,9 @@ export class Options {
   public ville: string ;
   public latitude: number ;
   public longitude: number ;
+  public page:string ;
   constructor() {
+    this.page = 'entry' ;
   	this.tri = 'distance' ;
     this.ordre = 'asc' ;
   	this.filtreparnotes = false ;

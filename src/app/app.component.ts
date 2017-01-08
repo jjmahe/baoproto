@@ -4,10 +4,12 @@ import { StatusBar,Geolocation } from 'ionic-native';
 
 import { TabsPage } from '../pages/tabs/tabs';
 import { Options } from '../providers/options' ;
+import { GoogleAnalyticsService } from '../providers/google-analytics-service' ;
 
 
-const urlBrowser = 'http://maps.google.com/maps/api/js?key=API_BROWSER_KEY';
-const urlIos = 'http://maps.google.com/maps/api/js?key=API_IOS_KEY';
+const urlBrowser = 'http://maps.google.com/maps/api/js?key=AIzaSyBc_Z6GWRSgrF0OcsgVB7Dqljbeawna75E';
+const urlIos = 'http://maps.google.com/maps/api/js?key=AIzaSyDMpqcE9uRcsnyIgsxnsTG8bnwqd1RDu4k';
+const urlAndroid = 'http://maps.google.com/maps/api/js?key=AIzaSyATNi30K7k6OH6ys_U3fL6852tcBSCN7Lg';
 
 @Component({
   template: `<ion-nav [root]="rootPage"></ion-nav>`
@@ -15,7 +17,9 @@ const urlIos = 'http://maps.google.com/maps/api/js?key=API_IOS_KEY';
 export class MyApp {
   rootPage = TabsPage;
 
-  constructor(private platform: Platform, private options: Options) {
+  constructor(private platform: Platform, 
+              private options: Options,
+              public GAService: GoogleAnalyticsService ) {
     platform.ready().then(() => {
       // Okay, so the platform is ready and our plugins are available.
       // Here you can do any higher level native things you might need.
@@ -38,6 +42,9 @@ export class MyApp {
         }
         else if (this.platform.is('ios')){
           node.src = urlIos ;          
+        }
+        else if (this.platform.is('android')){
+          node.src = urlAndroid ;          
         }
         node.type = 'text/javascript';
         node.async = true;

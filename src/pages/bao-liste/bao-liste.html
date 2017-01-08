@@ -18,44 +18,44 @@
 </ion-header>
 
 
-<ion-content padding >
-	
-	<ion-card *ngFor="let resto of restos" >
-		<ion-card-content>
-		<div class="myheader">
-			<ion-card-title [innerHTML]="resto.bao_restaurant">
-			</ion-card-title>
-		</div>
-			<button ion-button icon-right outline small (click)="navigateToResto(resto.bao_longlat)">itinéraire {{resto.bao_distance }}km <ion-icon name="arrow-forward"></ion-icon></button>
-			<button ion-button outline small class="buttonPicto" (click)="openLegende($event,resto.bao_picto)"><img class="baoPicto" [src]="resto.bao_pictohtml"></button>
-		     <p>
-				{{resto.bao_adresse_1}} {{resto.bao_adresse_2}}<br>{{resto.bao_codepostal}} {{resto.bao_ville}} 
-			</p>
-			<button *ngIf="resto.bao_tel!=''" ion-button icon-only small (click)="phoneCall(resto.bao_tel)">
-			  <ion-icon name="call"></ion-icon>
-			</button>
-			<button *ngIf="resto.bao_mobile!=''" ion-button icon-only  small (click)="phoneCall(resto.bao_mobile)">
-			  <ion-icon name="phone-portrait"></ion-icon>
-			</button>
-			<button  *ngIf="resto.bao_site!=''" ion-button icon-only small (click)="goToSite(resto.bao_site)">
-			  <ion-icon name="globe"></ion-icon>
-			</button>
-			<button  *ngIf="resto.bao_facebook!=''" ion-button icon-only small (click)="goToSite(resto.bao_facebook)">
-			  <ion-icon name="logo-facebook" ></ion-icon>
-			</button>
-			<button  *ngIf="resto.bao_instagram!=''" ion-button icon-only small (click)="goToSite(resto.bao_instagram)">
-			  <ion-icon name="logo-instagram"></ion-icon>
-			</button>
-<!--			<button ion-button icon-only small (click)="navigateToResto(resto.bao_longlat)">
-			  <ion-icon name="map"></ion-icon>
-			</button> -->
-			<button class="baoNav" ion-button icon-only small (click)="goToDetail(resto);">
-		        <ion-icon name="arrow-forward"></ion-icon>
-			</button>
-		
-		</ion-card-content>
-		
+<ion-content >
+	<div [virtualScroll]="restos" approxItemHeight="171px" [virtualTrackBy]="trackByFn">
+		<ion-card *virtualItem="let resto" >
+			<ion-card-content>
+			<div class="myheader">
+				<ion-card-title [innerHTML]="resto.bao_restaurant">
+				</ion-card-title>
+			</div>
+				<button ion-button icon-right outline small (click)="navigateToResto(resto.bao_longlat)">itinéraire {{resto.bao_distance }}km <ion-icon name="arrow-forward"></ion-icon></button>
+				<button ion-button outline small class="buttonPicto" (click)="openLegende($event,resto.bao_picto)"><img class="baoPicto" [src]="resto.bao_pictohtml"></button>
+			     <p>
+					{{resto.bao_adresse_1}} {{resto.bao_adresse_2}}<br>{{resto.bao_codepostal}} {{resto.bao_ville}} 
+				</p>
+				<button *ngIf="resto.bao_tel!=''" ion-button icon-only small (click)="phoneCall(resto.bao_tel)">
+				  <ion-icon name="call"></ion-icon>
+				</button>
+				<button *ngIf="resto.bao_mobile!=''" ion-button icon-only  small (click)="phoneCall(resto.bao_mobile)">
+				  <ion-icon name="phone-portrait"></ion-icon>
+				</button>
+				<button  *ngIf="resto.bao_site!=''" ion-button icon-only small (click)="goToSite(resto.bao_site)">
+				  <ion-icon name="globe"></ion-icon>
+				</button>
+				<button  *ngIf="resto.bao_facebook!=''" ion-button icon-only small (click)="goToSite(resto.bao_facebook)">
+				  <ion-icon name="logo-facebook" ></ion-icon>
+				</button>
+				<button  *ngIf="resto.bao_instagram!=''" ion-button icon-only small (click)="goToSite(resto.bao_instagram)">
+				  <ion-icon name="logo-instagram"></ion-icon>
+				</button>
+	<!--			<button ion-button icon-only small (click)="navigateToResto(resto.bao_longlat)">
+				  <ion-icon name="map"></ion-icon>
+				</button> -->
+				<button class="baoNav" ion-button icon-only small (click)="goToDetail(resto);">
+			        <ion-icon name="arrow-forward"></ion-icon>
+				</button>
+			
+			</ion-card-content>
+			
 
-	</ion-card>
-
+		</ion-card>
+	</div>
 </ion-content>

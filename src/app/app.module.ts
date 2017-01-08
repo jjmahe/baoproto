@@ -12,7 +12,9 @@ import { LegendePage } from '../pages/legende/legende' ;
 import { LegendePictoPage } from '../pages/legende-picto/legende-picto' ;
 import { Options } from '../providers/options';
 import { Restos } from '../providers/restos';
+import { Restolist } from '../providers/restolist';
 import { Villes } from '../providers/villes' ;
+import { GoogleAnalyticsService } from '../providers/google-analytics-service';
 import { Notation } from '../components/notation/notation';
 import { Note } from '../components/note/note' ;
 import { Brigade } from '../components/brigade/brigade';
@@ -53,7 +55,7 @@ import { Bonus } from '../components/bonus/bonus';
     LegendePage,
     LegendePictoPage
   ],
-  providers: [Options,Restos,Villes]
+  providers: [Options,Restolist,Restos,Villes,GoogleAnalyticsService]
 })
 export class AppModule {
 

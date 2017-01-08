@@ -19,7 +19,9 @@ export class Bonus {
     
   }
   ngOnChanges(changes){
-  	this.bonusLines = this.bonus.replace(new RegExp("&ndash;", 'g'),"-").split("-") ;
+    if(this.bonus){
+    	this.bonusLines = this.bonus.replace(new RegExp("&ndash;", 'g'),"-").split("-") ;
+    }
   }
 
 }

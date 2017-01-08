@@ -12,9 +12,9 @@ import { Options } from './options';
   for more info on providers and Angular 2 DI.
 */
 @Injectable()
-export class Restos {
-	private restosUrl = 'http://www.le-bouche-a-oreille.com/wp-json/IDE_BAO/v1/restos/';  // URL to web API
-//	private restosUrl = 'http://jjmahe.ddns.net:8080/wordpress/wp-json/IDE_BAO/v1/restos/';  // URL to web API
+export class Restolist {
+	private restosUrl = 'http://www.le-bouche-a-oreille.com/wp-json/IDE_BAO/v1/restolist';  // URL to web API
+//	private restosUrl = 'http://jjmahe.ddns.net:8080/wordpress/wp-json/IDE_BAO/v1/restolist';  // URL to web API
 	private options: Options ;
 
 	ville : string ;
@@ -38,13 +38,6 @@ export class Restos {
 		                .map(this.extractData,this.options)
 		                .catch(this.handleError);
 	}
-	getUnResto(id: number): Observable<any[]> {
-		
-		return this.http.get(this.restosUrl + id)
-		                .map(this.extractData,this.options)
-		                .catch(this.handleError);
-	}
-
 	/* select data based on filters in settings */
 	private extractData(res: Response) {
 		let baoFilter = function(resto: any){
@@ -109,7 +102,7 @@ export class Restos {
 	}
 
 	let	baoSortbyPublished = function(a:any,b:any){
-		return a.bao_published - b.bao_published ;
+		return b.bao_published - a.bao_published ;
 	}
 
 	let baoSortbyAlphabetiqueDesc = function(a:any,b:any){
